@@ -10,7 +10,7 @@ from email import encoders
 
 
 def writName(Name):
-    doc = docx.Document("C:\\Users\\fadia\\Desktop\\ourproject\\Certificate.docx")
+    doc = docx.Document("C:\\Users\\fadia\\Desktop\\ourproject\\Certificate.docx")# put url for docx document
     p = doc.paragraphs[9]
     p.add_run(Name)
     p.runs[0].bold = True
@@ -18,8 +18,8 @@ def writName(Name):
     font = style.font
     font.name = 'Times New Roman'
     font.size = docx.shared.Pt(18)
-    doc.save("C:\\Users\\fadia\\Desktop\\ourproject\\Certificate1.docx")
-    convert("Certificate1.docx", "C:\\Users\\fadia\\Desktop\\ourproject\\Certificate\\" + Name + ".pdf")
+    doc.save("C:\\Users\\fadia\\Desktop\\ourproject\\Certificate1.docx") # url nwe docx after edite
+    convert("Certificate1.docx", "C:\\Users\\fadia\\Desktop\\ourproject\\Certificate\\" + Name + ".pdf") #convert docx to pdf and save by name 
 
 
 def sendEmail(Email, Name):
@@ -32,49 +32,49 @@ Because your experience is valuable to us, in the attachment you will find your 
 
 Good luck,
 Best regards,
-ROB and FADIA'''
+ROB and FADIA''' #write the body you want sending with email
 
     sender = 'angelrobbor@gmail.com'
 
     password = 'AngelrobborAngel'
 
-    receiver = Email
+    receiver = Email 
 
-    mail = MIMEMultipart()
+    mail = MIMEMultipart() #Multipurpose Internet Mail Extensions ,  to support the transfer of single or multiple text and non-text attachments. 
     mail['From'] = sender
     mail['To'] = receiver
     mail['Subject'] = 'your certificate'
 
     mail.attach(MIMEText(body, 'plain'))
 
-    pdfname = "C:\\Users\\fadia\\Desktop\\ourproject\\Certificate\\" + Name + ".pdf"
+    pdfname = "C:\\Users\\fadia\\Desktop\\ourproject\\Certificate\\" + Name + ".pdf"# get file pdf
 
-    binary_pdf = open(pdfname, 'rb')
+    binary_pdf = open(pdfname, 'rb') #opene by binary
 
     payload = MIMEBase('application', 'octate-stream', Name=pdfname)
     payload = MIMEBase('application', 'pdf', Name=Name)
     payload.set_payload((binary_pdf).read())
 
-    encoders.encode_base64(payload)
+    encoders.encode_base64(payload) 
 
-    payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
+    payload.add_header('Content-Decomposition', 'attachment', filename=pdfname) # add the attachment to header
     mail.attach(payload)
 
-    session = smtplib.SMTP('smtp.gmail.com', 587)
-    session.ehlo()
+    session = smtplib.SMTP('smtp.gmail.com', 587) # open session by protocol smtp
+    session.ehlo() # Check the connection
 
-    session.starttls()
+    session.starttls() # check of encode 
 
-    session.login(sender, password)
+    session.login(sender, password) #login 
 
     text = mail.as_string()
-    session.sendmail(sender, receiver, text)
+    session.sendmail(sender, receiver, text)# start sinding email 
     session.quit()
     print('Mail Sent')
 
 
-os.chdir("C:\\Users\\fadia\\Desktop\\ourproject")
-vwb = openpyxl.load_workbook('Email.xlsx')
+os.chdir("C:\\Users\\fadia\\Desktop\\ourproject") # main 
+vwb = openpyxl.load_workbook('Email.xlsx') 
 # sheet = vwb.get_sheet_by_name('Sheet1')
 sheet = vwb["Sheet1"]
 
