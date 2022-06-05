@@ -10,7 +10,7 @@ from email import encoders
 
 
 def writName(Name):
-    doc = docx.Document("C:\\Users\\fadia\\Desktop\\ourproject\\Certificate.docx")# put url for docx document
+    doc = docx.Document("C:\\Users\\.\\Desktop\\ourproject\\Certificate.docx")# put url for docx document
     p = doc.paragraphs[9]
     p.add_run(Name)
     p.runs[0].bold = True
@@ -34,9 +34,9 @@ Good luck,
 Best regards,
 ROB and FADIA''' #write the body you want sending with email
 
-    sender = 'angelrobbor@gmail.com'
+    sender = '.....@gmail.com'# enter your email
 
-    password = 'AngelrobborAngel'
+    password = '.....' # enter password for your email
 
     receiver = Email 
 
