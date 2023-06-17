@@ -18,8 +18,8 @@ def writName(Name):
     font = style.font
     font.name = 'Times New Roman'
     font.size = docx.shared.Pt(18)
-    doc.save("C:\\Users\\fadia\\Desktop\\ourproject\\Certificate1.docx") # url nwe docx after edite
-    convert("Certificate1.docx", "C:\\Users\\fadia\\Desktop\\ourproject\\Certificate\\" + Name + ".pdf") #convert docx to pdf and save by name 
+    doc.save("C:\\Users\\Desktop\\ourproject\\Certificate1.docx") # url nwe docx after edite
+    convert("Certificate1.docx", "C:\\Users\\Desktop\\ourproject\\Certificate\\" + Name + ".pdf") #convert docx to pdf and save by name 
 
 
 def sendEmail(Email, Name):
@@ -73,7 +73,7 @@ ROB and FADIA''' #write the body you want sending with email
     print('Mail Sent')
 
 
-os.chdir("C:\\Users\\fadia\\Desktop\\ourproject") # main 
+os.chdir("C:\\Users\\Desktop\\ourproject") # main 
 vwb = openpyxl.load_workbook('Email.xlsx') 
 # sheet = vwb.get_sheet_by_name('Sheet1')
 sheet = vwb["Sheet1"]
